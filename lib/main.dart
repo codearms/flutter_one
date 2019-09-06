@@ -1,6 +1,146 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(MyApp());
+import 'drawer_header.dart';
+import 'res/colors.dart';
+import 'res/iconfont.dart';
+import 'res/strings.dart';
+
+void main() => runApp(OneApp());
+
+class OneApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: "One",
+      theme: ThemeData.light(),
+      home: MainPage(),
+    );
+  }
+}
+
+class MainPage extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() => _MainPageState();
+}
+
+class _MainPageState extends State<MainPage> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("One"),
+      ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Theme.of(context).primaryColor,
+        onPressed: null,
+        child: Icon(
+          Icons.add,
+          color: FColors.color_content_main,
+        ),
+      ),
+      drawer: showDrawer(),
+    );
+  }
+}
+
+Widget showDrawer() {
+  final _color = FColors.color_content_main;
+  final _font = const TextStyle(color: FColors.color_content_main);
+  return Drawer(
+    child: ListView(
+      padding: EdgeInsets.zero,
+      children: <Widget>[
+        // 头部
+//        UserAccountsDrawerHeader(
+//          //头像
+//          currentAccountPicture: GestureDetector(
+//            //圆形头像
+//            child: ClipOval(
+//              child: Image.network(
+//                  'https://avatar.csdnimg.cn/C/0/1/1_yechaoa.jpg'),
+//            ),
+//          ),
+//          // 其他头像
+//          otherAccountsPictures: <Widget>[
+//            IconButton(
+//              icon: Icon(IconFont.icon_nav_scan_code, color: FColors.white),
+//              onPressed: () {},
+//            ),
+//            IconButton(
+//              icon: Icon(IconFont.icon_nav_scan_code, color: FColors.white),
+//              onPressed: () {},
+//            ),
+//            IconButton(
+//              icon: Icon(IconFont.icon_nav_scan_code, color: FColors.white),
+//              onPressed: () {},
+//            )
+//          ],
+//          accountName: Text(
+//            Strings.login,
+//            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
+//          ),
+//          accountEmail: Text(Strings.personal_description),
+//        ),
+        OneDrawerHeader(),
+        // 导航
+        // 项目介绍
+        ListTile(
+          leading: Icon(
+            IconFont.icon_nav_project_introduction,
+            color: _color,
+          ),
+          title: Text(Strings.project_introduction, style: _font),
+          onTap: () {},
+        ),
+        // 更新说明
+        ListTile(
+          leading: Icon(
+            IconFont.icon_nav_update_description,
+            color: _color,
+          ),
+          title: Text(Strings.update_description, style: _font),
+          onTap: () {},
+        ),
+        // 扫码下载
+        ListTile(
+          leading: Icon(
+            IconFont.icon_nav_scan_code,
+            color: _color,
+          ),
+          title: Text(Strings.scan_code, style: _font),
+          onTap: () {},
+        ),
+        // 问题反馈
+        ListTile(
+          leading: Icon(
+            IconFont.icon_nav_problem_feedback,
+            color: _color,
+          ),
+          title: Text(Strings.problem_feedback, style: _font),
+          onTap: () {},
+        ),
+        // 关于我们
+        ListTile(
+          leading: Icon(
+            IconFont.icon_nav_about,
+            color: _color,
+          ),
+          title: Text(Strings.about, style: _font),
+          onTap: () {},
+        ),
+        // 捐赠开发者
+        ListTile(
+          leading: Icon(
+            IconFont.icon_nav_about,
+            color: _color,
+          ),
+          title: Text(Strings.donate, style: _font),
+          onTap: () {},
+        ),
+      ],
+    ),
+  );
+}
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
