@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
+import 'book_page.dart';
 import 'drawer_header.dart';
+import 'home_page.dart';
+import 'movie_page.dart';
+import 'music_page.dart';
+import 'news_page.dart';
 import 'res/colors.dart';
 import 'res/iconfont.dart';
 import 'res/strings.dart';
@@ -8,10 +14,15 @@ import 'res/strings.dart';
 void main() => runApp(OneApp());
 
 class OneApp extends StatelessWidget {
+  // StatusBar设置为透明,去除半透明遮罩
+  final SystemUiOverlayStyle _style =
+      SystemUiOverlayStyle(statusBarColor: Colors.transparent);
+
   @override
   Widget build(BuildContext context) {
+    // 将style设置到app
+    SystemChrome.setSystemUIOverlayStyle(_style);
     return MaterialApp(
-      title: "One",
       theme: ThemeData.light(),
       home: MainPage(),
     );
@@ -24,22 +35,113 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
+  // 图标默认颜色
+  final _unselectedIcon = IconThemeData(color: FColors.color_content_general);
+
+  // 字体加粗
+  final _font = const TextStyle(fontWeight: FontWeight.w700);
+
+  // 默认选中项
+  int _index = 0;
+  var _colors = const <Color>[
+    FColors.color_home,
+    FColors.color_news,
+    FColors.color_book,
+    FColors.color_music,
+    FColors.color_movie
+  ];
+  var _titles = const <String>[
+    Strings.home,
+    Strings.news,
+    Strings.book,
+    Strings.music,
+    Strings.movie
+  ];
+
+  var _pageController = PageController(initialPage: 0);
+  var pages = <Widget>[
+    HomePage(),
+    NewsPage(),
+    BookPage(),
+    MusicPage(),
+    MoviePage(),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("One"),
+        backgroundColor: _colors[_index],
+        title: Text(_titles[_index]),
+        titleSpacing: 0, // Drawer图标和标题之间的间距
+        bottomOpacity: 0,
       ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Theme.of(context).primaryColor,
-        onPressed: null,
-        child: Icon(
-          Icons.add,
-          color: FColors.color_content_main,
-        ),
+      backgroundColor: FColors.bg,
+      body: PageView.builder(
+          onPageChanged: (index) => setState(() => _index = index),
+          controller: _pageController,
+          itemCount: pages.length,
+          itemBuilder: (BuildContext context, int index) =>
+              pages.elementAt(_index)),
+      bottomNavigationBar: BottomNavigationBar(
+        items: [
+          BottomNavigationBarItem(
+            title: Text(Strings.home, style: _font),
+            icon: Icon(IconFont.icon_home),
+            activeIcon: Icon(IconFont.icon_home, color: FColors.color_home),
+          ),
+          BottomNavigationBarItem(
+            title: Text(Strings.news, style: _font),
+            icon: Icon(IconFont.icon_news),
+            activeIcon: Icon(IconFont.icon_news, color: FColors.color_news),
+          ),
+          BottomNavigationBarItem(
+            title: Text(Strings.book, style: _font),
+            icon: Icon(IconFont.icon_book),
+            activeIcon: Icon(IconFont.icon_book, color: FColors.color_book),
+          ),
+          BottomNavigationBarItem(
+            title: Text(Strings.music, style: _font),
+            icon: Icon(IconFont.icon_music),
+            activeIcon: Icon(IconFont.icon_music, color: FColors.color_music),
+          ),
+          BottomNavigationBarItem(
+            title: Text(Strings.movie, style: _font),
+            icon: Icon(IconFont.icon_movie),
+            activeIcon: Icon(IconFont.icon_movie, color: FColors.color_movie),
+          )
+        ],
+
+        // 当前选中下标
+        currentIndex: _index,
+        // 显示模式
+        type: BottomNavigationBarType.fixed,
+        // 图标大小
+        iconSize: 32,
+        // 没有选中图标样式
+        unselectedIconTheme: _unselectedIcon,
+        // 选中图标样式
+        // selectedIconTheme: ,
+        // 没有选中字体大小
+        unselectedFontSize: 12,
+        // 选中字体大小
+        selectedFontSize: 12,
+        // 没有选中字体颜色
+        unselectedItemColor: FColors.color_content_general,
+        // 选中字体颜色[效果一样,只能二选一]
+        selectedItemColor: _colors[_index],
+        // fixedColor: _colors[_index],
+
+        onTap: _onItemTapped,
       ),
       drawer: showDrawer(),
     );
+  }
+
+  void _onItemTapped(int index) {
+    // BottomNavigationBar 和 PageView 关联
+    _pageController.animateToPage(index,
+        duration: Duration(milliseconds: 300), curve: Curves.ease);
   }
 }
 
