@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'book_page.dart';
 import 'drawer_header.dart';
-import 'home_page.dart';
-import 'movie_page.dart';
-import 'music_page.dart';
-import 'news_page.dart';
+import 'pages/book_page.dart';
+import 'pages/home_page.dart';
+import 'pages/movie_page.dart';
+import 'pages/music_page.dart';
+import 'pages/news_page.dart';
+import 'pages/project_introduction.dart';
 import 'res/colors.dart';
 import 'res/iconfont.dart';
 import 'res/strings.dart';
+import 'routes.dart';
 
 void main() => runApp(OneApp());
 
@@ -23,7 +25,10 @@ class OneApp extends StatelessWidget {
     // 将style设置到app
     SystemChrome.setSystemUIOverlayStyle(_style);
     return MaterialApp(
-      theme: ThemeData.light(),
+//      theme: ThemeData.light(),
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
       home: MainPage(),
     );
   }
@@ -134,7 +139,7 @@ class _MainPageState extends State<MainPage> {
 
         onTap: _onItemTapped,
       ),
-      drawer: showDrawer(),
+      drawer: showDrawer(context),
     );
   }
 
@@ -145,7 +150,7 @@ class _MainPageState extends State<MainPage> {
   }
 }
 
-Widget showDrawer() {
+Widget showDrawer(BuildContext context) {
   final _color = FColors.color_content_main;
   final _font = const TextStyle(color: FColors.color_content_main);
   return Drawer(
@@ -192,7 +197,7 @@ Widget showDrawer() {
             color: _color,
           ),
           title: Text(Strings.project_introduction, style: _font),
-          onTap: () {},
+          onTap: () => push(context, ProjectIntroductionPage()),
         ),
         // 更新说明
         ListTile(
@@ -201,7 +206,7 @@ Widget showDrawer() {
             color: _color,
           ),
           title: Text(Strings.update_description, style: _font),
-          onTap: () {},
+          onTap: () => push(context, ProjectIntroductionPage()),
         ),
         // 扫码下载
         ListTile(
@@ -210,7 +215,7 @@ Widget showDrawer() {
             color: _color,
           ),
           title: Text(Strings.scan_code, style: _font),
-          onTap: () {},
+          onTap: () => push(context, ProjectIntroductionPage()),
         ),
         // 问题反馈
         ListTile(
@@ -219,16 +224,13 @@ Widget showDrawer() {
             color: _color,
           ),
           title: Text(Strings.problem_feedback, style: _font),
-          onTap: () {},
+          onTap: () => push(context, ProjectIntroductionPage()),
         ),
         // 关于我们
         ListTile(
-          leading: Icon(
-            IconFont.icon_nav_about,
-            color: _color,
-          ),
+          leading: Icon(IconFont.icon_nav_about, color: _color),
           title: Text(Strings.about, style: _font),
-          onTap: () {},
+          onTap: () => push(context, ProjectIntroductionPage()),
         ),
         // 捐赠开发者
         ListTile(
@@ -237,11 +239,16 @@ Widget showDrawer() {
             color: _color,
           ),
           title: Text(Strings.donate, style: _font),
-          onTap: () {},
+          onTap: () => push(context, ProjectIntroductionPage()),
         ),
       ],
     ),
   );
+}
+
+void push(BuildContext context, Widget widget) {
+  // Navigator.push(context, MaterialPageRoute(builder: (context) => widget));
+  Navigator.push(context, RouteSlide(widget));
 }
 
 class MyApp extends StatelessWidget {
@@ -251,15 +258,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
         primarySwatch: Colors.blue,
       ),
       home: MyHomePage(title: 'Flutter Demo Home Page'),

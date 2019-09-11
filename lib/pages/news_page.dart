@@ -10,3 +10,8 @@ class NewsPage extends StatelessWidget {
     );
   }
 }
+
+
+void a() {
+
+}
