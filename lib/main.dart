@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
-import 'drawer_header.dart';
-import 'pages/book_page.dart';
-import 'pages/home_page.dart';
-import 'pages/movie_page.dart';
-import 'pages/music_page.dart';
-import 'pages/news_page.dart';
-import 'pages/project_introduction.dart';
-import 'res/colors.dart';
-import 'res/iconfont.dart';
-import 'res/strings.dart';
-import 'routes.dart';
+import 'package:flutter_one/drawer_header.dart';
+import 'package:flutter_one/navigation/about_page.dart';
+import 'package:flutter_one/navigation/donate_page.dart';
+import 'package:flutter_one/navigation/problem_feedback_page.dart';
+import 'package:flutter_one/navigation/project_introduction_page.dart';
+import 'package:flutter_one/navigation/scan_code_page.dart';
+import 'package:flutter_one/navigation/update_description_page.dart';
+import 'package:flutter_one/pages/book_page.dart';
+import 'package:flutter_one/pages/home_page.dart';
+import 'package:flutter_one/pages/movie_page.dart';
+import 'package:flutter_one/pages/music_page.dart';
+import 'package:flutter_one/pages/news_page.dart';
+import 'package:flutter_one/res/colors.dart';
+import 'package:flutter_one/res/iconfont.dart';
+import 'package:flutter_one/res/strings.dart';
+import 'package:flutter_one/routes.dart';
 
 void main() => runApp(OneApp());
 
@@ -206,7 +210,7 @@ Widget showDrawer(BuildContext context) {
             color: _color,
           ),
           title: Text(Strings.update_description, style: _font),
-          onTap: () => push(context, ProjectIntroductionPage()),
+          onTap: () => push(context, UpdateDescriptionPage()),
         ),
         // 扫码下载
         ListTile(
@@ -215,7 +219,7 @@ Widget showDrawer(BuildContext context) {
             color: _color,
           ),
           title: Text(Strings.scan_code, style: _font),
-          onTap: () => push(context, ProjectIntroductionPage()),
+          onTap: () => push(context, ScanCodePage()),
         ),
         // 问题反馈
         ListTile(
@@ -224,13 +228,13 @@ Widget showDrawer(BuildContext context) {
             color: _color,
           ),
           title: Text(Strings.problem_feedback, style: _font),
-          onTap: () => push(context, ProjectIntroductionPage()),
+          onTap: () => push(context, ProblemFeedbackPage()),
         ),
         // 关于我们
         ListTile(
           leading: Icon(IconFont.icon_nav_about, color: _color),
           title: Text(Strings.about, style: _font),
-          onTap: () => push(context, ProjectIntroductionPage()),
+          onTap: () => push(context, AboutPage()),
         ),
         // 捐赠开发者
         ListTile(
@@ -239,7 +243,7 @@ Widget showDrawer(BuildContext context) {
             color: _color,
           ),
           title: Text(Strings.donate, style: _font),
-          onTap: () => push(context, ProjectIntroductionPage()),
+          onTap: () => push(context, DonatePage()),
         ),
       ],
     ),
