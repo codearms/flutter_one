@@ -12,6 +12,41 @@ class ScanCodePage extends StatelessWidget {
         titleSpacing: 0,
         bottomOpacity: 0,
       ),
+      body: Column(
+        children: <Widget>[
+          Container(
+            margin: EdgeInsets.all(16),
+            padding: EdgeInsets.all(16),
+            decoration: BoxDecoration(
+              border: Border.all(
+                color: FColors.color_content_secondary,
+                width: 1,
+                style: BorderStyle.solid,
+              ),
+              borderRadius: BorderRadius.all(Radius.circular(4)),
+            ),
+            child: Text(
+              Strings.download_content,
+              style: TextStyle(
+                color: FColors.color_content_general,
+                fontSize: 14,
+              ),
+            ),
+          ),
+          Container(
+            margin: EdgeInsets.fromLTRB(0, 32, 0, 0),
+            padding: EdgeInsets.all(8),
+            color: Colors.white,
+            child: Image.asset(
+              "images/ic_code.png",
+              width: 220,
+              height: 220,
+              fit: BoxFit.cover,
+            ),
+          ),
+          Divider(),
+        ],
+      ),
     );
   }
 }
