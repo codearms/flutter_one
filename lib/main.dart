@@ -96,28 +96,28 @@ class _MainPageState extends State<MainPage> {
         items: [
           BottomNavigationBarItem(
             title: Text(Strings.home, style: _font),
-            icon: Icon(IconFont.icon_home),
-            activeIcon: Icon(IconFont.icon_home, color: FColors.color_home),
+            icon: Icon(IconFont.ic_home),
+            activeIcon: Icon(IconFont.ic_home, color: FColors.color_home),
           ),
           BottomNavigationBarItem(
             title: Text(Strings.news, style: _font),
-            icon: Icon(IconFont.icon_news),
-            activeIcon: Icon(IconFont.icon_news, color: FColors.color_news),
+            icon: Icon(IconFont.ic_news),
+            activeIcon: Icon(IconFont.ic_news, color: FColors.color_news),
           ),
           BottomNavigationBarItem(
             title: Text(Strings.book, style: _font),
-            icon: Icon(IconFont.icon_book),
-            activeIcon: Icon(IconFont.icon_book, color: FColors.color_book),
+            icon: Icon(IconFont.ic_book),
+            activeIcon: Icon(IconFont.ic_book, color: FColors.color_book),
           ),
           BottomNavigationBarItem(
             title: Text(Strings.music, style: _font),
-            icon: Icon(IconFont.icon_music),
-            activeIcon: Icon(IconFont.icon_music, color: FColors.color_music),
+            icon: Icon(IconFont.ic_music),
+            activeIcon: Icon(IconFont.ic_music, color: FColors.color_music),
           ),
           BottomNavigationBarItem(
             title: Text(Strings.movie, style: _font),
-            icon: Icon(IconFont.icon_movie),
-            activeIcon: Icon(IconFont.icon_movie, color: FColors.color_movie),
+            icon: Icon(IconFont.ic_movie),
+            activeIcon: Icon(IconFont.ic_movie, color: FColors.color_movie),
           )
         ],
 
@@ -174,15 +174,15 @@ Widget showDrawer(BuildContext context) {
 //          // 其他头像
 //          otherAccountsPictures: <Widget>[
 //            IconButton(
-//              icon: Icon(IconFont.icon_nav_scan_code, color: FColors.white),
+//              icon: Icon(IconFont.ic_nav_scan_code, color: FColors.white),
 //              onPressed: () {},
 //            ),
 //            IconButton(
-//              icon: Icon(IconFont.icon_nav_scan_code, color: FColors.white),
+//              icon: Icon(IconFont.ic_nav_scan_code, color: FColors.white),
 //              onPressed: () {},
 //            ),
 //            IconButton(
-//              icon: Icon(IconFont.icon_nav_scan_code, color: FColors.white),
+//              icon: Icon(IconFont.ic_nav_scan_code, color: FColors.white),
 //              onPressed: () {},
 //            )
 //          ],
@@ -197,7 +197,7 @@ Widget showDrawer(BuildContext context) {
         // 项目介绍
         ListTile(
           leading: Icon(
-            IconFont.icon_nav_project_introduction,
+            IconFont.ic_nav_project_introduction,
             color: _color,
           ),
           title: Text(Strings.project_introduction, style: _font),
@@ -206,7 +206,7 @@ Widget showDrawer(BuildContext context) {
         // 更新说明
         ListTile(
           leading: Icon(
-            IconFont.icon_nav_update_description,
+            IconFont.ic_nav_update_description,
             color: _color,
           ),
           title: Text(Strings.update_description, style: _font),
@@ -215,7 +215,7 @@ Widget showDrawer(BuildContext context) {
         // 扫码下载
         ListTile(
           leading: Icon(
-            IconFont.icon_nav_scan_code,
+            IconFont.ic_nav_scan_code,
             color: _color,
           ),
           title: Text(Strings.scan_code, style: _font),
@@ -224,7 +224,7 @@ Widget showDrawer(BuildContext context) {
         // 问题反馈
         ListTile(
           leading: Icon(
-            IconFont.icon_nav_problem_feedback,
+            IconFont.ic_nav_problem_feedback,
             color: _color,
           ),
           title: Text(Strings.problem_feedback, style: _font),
@@ -232,14 +232,14 @@ Widget showDrawer(BuildContext context) {
         ),
         // 关于我们
         ListTile(
-          leading: Icon(IconFont.icon_nav_about, color: _color),
+          leading: Icon(IconFont.ic_nav_about, color: _color),
           title: Text(Strings.about, style: _font),
           onTap: () => push(context, AboutPage()),
         ),
         // 捐赠开发者
         ListTile(
           leading: Icon(
-            IconFont.icon_nav_about,
+            IconFont.ic_nav_donate,
             color: _color,
           ),
           title: Text(Strings.donate, style: _font),
