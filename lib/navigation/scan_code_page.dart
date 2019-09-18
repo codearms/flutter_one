@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_one/flutter_ui.dart';
 import 'package:flutter_one/res/colors.dart';
 import 'package:flutter_one/res/dimens.dart';
 import 'package:flutter_one/res/iconfont.dart';
@@ -44,25 +45,7 @@ class ScanCodePage extends StatelessWidget {
       ),
       body: Column(
         children: <Widget>[
-          Container(
-            margin: EdgeInsets.all(Dimens.sixteen),
-            padding: EdgeInsets.all(Dimens.twelve),
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: FColors.color_content_secondary,
-                width: 1,
-                style: BorderStyle.solid,
-              ),
-              borderRadius: BorderRadius.all(Radius.circular(Dimens.four)),
-            ),
-            child: Text(
-              Strings.download_content,
-              style: TextStyle(
-                color: FColors.color_content_general,
-                fontSize: Dimens.text_size_small,
-              ),
-            ),
-          ),
+          FlutterUi.promptInformation(Strings.download_content),
           Container(
             margin: EdgeInsets.fromLTRB(0, Dimens.thirty_two, 0, 0),
             padding: EdgeInsets.all(8),
