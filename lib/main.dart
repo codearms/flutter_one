@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_one/app.dart';
 import 'package:flutter_one/drawer_header.dart';
+import 'package:flutter_one/flutter_ui.dart';
 import 'package:flutter_one/navigation/about_page.dart';
 import 'package:flutter_one/navigation/donate_page.dart';
 import 'package:flutter_one/navigation/problem_feedback_page.dart';
@@ -13,6 +15,7 @@ import 'package:flutter_one/pages/movie_page.dart';
 import 'package:flutter_one/pages/music_page.dart';
 import 'package:flutter_one/pages/news_page.dart';
 import 'package:flutter_one/res/colors.dart';
+import 'package:flutter_one/res/dimens.dart';
 import 'package:flutter_one/res/iconfont.dart';
 import 'package:flutter_one/res/strings.dart';
 import 'package:flutter_one/routes.dart';
@@ -75,6 +78,12 @@ class _MainPageState extends State<MainPage> {
     MusicPage(),
     MoviePage(),
   ];
+
+  @override
+  void initState() {
+    super.initState();
+    App.initialize();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -156,7 +165,10 @@ class _MainPageState extends State<MainPage> {
 
 Widget showDrawer(BuildContext context) {
   final _color = FColors.color_content_main;
-  final _font = const TextStyle(color: FColors.color_content_main);
+  final _font = const TextStyle(
+    fontSize: Dimens.text_size_normal,
+    color: FColors.color_content_main,
+  );
   return Drawer(
     child: ListView(
       padding: EdgeInsets.zero,
@@ -195,7 +207,7 @@ Widget showDrawer(BuildContext context) {
         OneDrawerHeader(),
         // 导航
         // 项目介绍
-        ListTile(
+        NavigationItem(
           leading: Icon(
             IconFont.ic_nav_project_introduction,
             color: _color,
@@ -204,7 +216,7 @@ Widget showDrawer(BuildContext context) {
           onTap: () => push(context, ProjectIntroductionPage()),
         ),
         // 更新说明
-        ListTile(
+        NavigationItem(
           leading: Icon(
             IconFont.ic_nav_update_description,
             color: _color,
@@ -213,7 +225,7 @@ Widget showDrawer(BuildContext context) {
           onTap: () => push(context, UpdateDescriptionPage()),
         ),
         // 扫码下载
-        ListTile(
+        NavigationItem(
           leading: Icon(
             IconFont.ic_nav_scan_code,
             color: _color,
@@ -222,7 +234,7 @@ Widget showDrawer(BuildContext context) {
           onTap: () => push(context, ScanCodePage()),
         ),
         // 问题反馈
-        ListTile(
+        NavigationItem(
           leading: Icon(
             IconFont.ic_nav_problem_feedback,
             color: _color,
@@ -231,13 +243,13 @@ Widget showDrawer(BuildContext context) {
           onTap: () => push(context, ProblemFeedbackPage()),
         ),
         // 关于我们
-        ListTile(
+        NavigationItem(
           leading: Icon(IconFont.ic_nav_about, color: _color),
           title: Text(Strings.about, style: _font),
           onTap: () => push(context, AboutPage()),
         ),
         // 捐赠开发者
-        ListTile(
+        NavigationItem(
           leading: Icon(
             IconFont.ic_nav_donate,
             color: _color,

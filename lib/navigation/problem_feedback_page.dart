@@ -29,6 +29,7 @@ class ProblemFeedbackPage extends StatelessWidget {
           FlutterUi.fullLineContent(Strings.qq, () {}),
           Divider(height: 0, indent: 16, color: FColors.bg_mask),
           FlutterUi.fullLineContent(Strings.email, () {}),
+          Divider(height: 0, color: FColors.color_divider),
         ],
       ),
     );

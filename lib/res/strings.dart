@@ -69,12 +69,12 @@ class Strings {
   static const String email =  "Email";
 
 //  关于我们
-//  static const String current_version =  "当前版本 V%1$s";
+  static const String current_version =  "当前版本 V%s";
   static const String check_update =  "检查更新";
   static const String give_a_star =  "给个Star吧";
-  static const String gank =  "《<u>代码家 · 干货集中营</u>》";
+  static const String gank =  "代码家.干货集中营";
   static const String gank_api =  "https://gank.io/api";
-  static const String dou_ban =  "《<u>豆瓣开发者服务使用条款</u>》";
+  static const String dou_ban =  "豆瓣开发者服务使用条款";
   static const String dou_ban_terms =  "https://www.douban.com/about/agreement";
   static const String copyright =  "©2019 https://github.com/maoqiqi/One";
 
@@ -264,7 +264,7 @@ class Strings {
   static const String trailers_and_photos =  "预告片/剧照";
   static const String more =  "更多信息";
 
- static const  movie_titles = [ 
+ static const  movie_titles = [
   "正在热映",
   "即将上映",
   ];

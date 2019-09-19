@@ -2,6 +2,46 @@ import 'package:flutter/material.dart';
 import 'package:flutter_one/res/colors.dart';
 import 'package:flutter_one/res/dimens.dart';
 
+class NavigationItem extends StatelessWidget {
+  final Color color;
+  final Color splashColor;
+  final Widget leading;
+  final Widget title;
+  final GestureTapCallback onTap;
+
+  final _o = EdgeInsets.zero;
+  final _p = const EdgeInsets.only(left: Dimens.sixteen, right: Dimens.sixteen);
+
+  const NavigationItem({
+    Key key,
+    this.color,
+    this.splashColor,
+    this.leading,
+    this.title,
+    this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Ink(
+      color: color == null ? FColors.transparent : color,
+      child: InkWell(
+        splashColor: splashColor == null ? FColors.color_divider : splashColor,
+        child: Container(
+          height: Dimens.forty_eight,
+          child: Row(
+            children: <Widget>[
+              Padding(padding: leading == null ? _o : _p, child: leading),
+              Padding(padding: title == null ? _o : _p, child: title),
+            ],
+          ),
+        ),
+        onTap: onTap,
+      ),
+    );
+  }
+}
+
 class FlutterUi {
   static promptInformation(String text) {
     return Container(
@@ -24,8 +64,6 @@ class FlutterUi {
       ),
     );
   }
-
-
 
   static fullLineTitle(String text) {
     return Row(
@@ -73,6 +111,38 @@ class FlutterUi {
           ),
         ),
         onPressed: pressed,
+      ),
+    );
+  }
+
+  static agreement(String text) {
+    return Text.rich(
+      TextSpan(
+        children: <TextSpan>[
+          TextSpan(
+            text: "《",
+            style: TextStyle(
+              color: FColors.color_content_main,
+              fontSize: Dimens.text_size_smaller,
+            ),
+          ),
+          TextSpan(
+            text: text,
+            style: TextStyle(
+              color: FColors.color_content_main,
+              fontSize: Dimens.text_size_smaller,
+              decoration: TextDecoration.underline,
+              textBaseline: TextBaseline.ideographic,
+            ),
+          ),
+          TextSpan(
+            text: "》",
+            style: TextStyle(
+              color: FColors.color_content_main,
+              fontSize: Dimens.text_size_smaller,
+            ),
+          ),
+        ],
       ),
     );
   }

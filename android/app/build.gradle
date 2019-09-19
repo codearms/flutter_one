@@ -32,8 +32,8 @@ android {
     }
 
     defaultConfig {
-        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "com.codearms.maoqiqi.flutter.flutter_one"
+        // 指定您自己惟一的应用程序ID
+        applicationId "com.codearms.maoqiqi.flutter.one"
         minSdkVersion 16
         targetSdkVersion 28
         versionCode flutterVersionCode.toInteger()
