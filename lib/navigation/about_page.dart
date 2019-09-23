@@ -32,11 +32,14 @@ class AboutPage extends StatelessWidget {
               ),
             ),
           ),
-          Text(
-            sprintf(Strings.current_version, [App.packageInfo.version]),
-            style: TextStyle(
-              color: FColors.color_content_secondary,
-              fontSize: Dimens.text_size_smaller,
+          Padding(
+            padding: EdgeInsets.only(top: Dimens.four),
+            child: Text(
+              sprintf(Strings.current_version, [App.packageInfo.version]),
+              style: TextStyle(
+                color: FColors.color_content_secondary,
+                fontSize: Dimens.text_size_smaller,
+              ),
             ),
           ),
           Padding(padding: EdgeInsets.only(top: Dimens.thirty_two)),
@@ -68,11 +71,11 @@ class AboutPage extends StatelessWidget {
           Expanded(child: Padding(padding: EdgeInsets.zero)),
           Padding(
             padding: EdgeInsets.only(bottom: Dimens.eight),
-            child: FlutterUi.agreement(Strings.gank),
+            child: Agreement(Strings.gank),
           ),
           Padding(
             padding: EdgeInsets.only(bottom: Dimens.eight),
-            child: FlutterUi.agreement(Strings.dou_ban),
+            child: Agreement(Strings.dou_ban),
           ),
           Padding(
             padding: EdgeInsets.only(bottom: Dimens.eight),

@@ -49,6 +49,8 @@ flutter:
     - images/bg_project_introduction.jpg
     - images/ic_code.png
     - images/ic_launcher.png
+    - images/ic_ali_pay.png
+    - images/ic_wx_pay.png
 
     # An image asset can refer to one or more resolution-specific "variants", see
     # https://flutter.dev/assets-and-images/#resolution-aware.

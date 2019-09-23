@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_one/flutter_ui.dart';
 import 'package:flutter_one/res/colors.dart';
+import 'package:flutter_one/res/dimens.dart';
 import 'package:flutter_one/res/strings.dart';
 
 class ProblemFeedbackPage extends StatelessWidget {
+  final _s = const TextStyle(fontSize: Dimens.text_size_normal);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,16 +22,32 @@ class ProblemFeedbackPage extends StatelessWidget {
           FlutterUi.promptInformation(Strings.problem_feedback_content),
           Divider(height: 0, color: FColors.color_divider),
           FlutterUi.fullLineTitle(Strings.issues),
-          FlutterUi.fullLineContent(Strings.app_name, () {}),
+          NavigationItem(
+            color: FColors.color_title,
+            title: Text(Strings.app_name, style: _s),
+            onTap: () {},
+          ),
           Divider(height: 0, indent: 16, color: FColors.bg_mask),
-          FlutterUi.fullLineContent(Strings.problems, () {}),
+          NavigationItem(
+            color: FColors.color_title,
+            title: Text(Strings.problems, style: _s),
+            onTap: () {},
+          ),
           Divider(height: 0, color: FColors.color_divider),
           Padding(padding: EdgeInsets.only(top: 16)),
           Divider(height: 0, color: FColors.color_divider),
           FlutterUi.fullLineTitle(Strings.contact_me),
-          FlutterUi.fullLineContent(Strings.qq, () {}),
+          NavigationItem(
+            color: FColors.color_title,
+            title: Text(Strings.qq, style: _s),
+            onTap: () {},
+          ),
           Divider(height: 0, indent: 16, color: FColors.bg_mask),
-          FlutterUi.fullLineContent(Strings.email, () {}),
+          NavigationItem(
+            color: FColors.color_title,
+            title: Text(Strings.email, style: _s),
+            onTap: () {},
+          ),
           Divider(height: 0, color: FColors.color_divider),
         ],
       ),
